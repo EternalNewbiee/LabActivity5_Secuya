@@ -3,6 +3,8 @@ package SimpleCalc;
 import LeapYear.LeapYearGUI;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SimpleCalcGUI extends JFrame {
     private JPanel panel1;
@@ -20,6 +22,32 @@ public class SimpleCalcGUI extends JFrame {
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         app.setTitle("Simple Calculator");
         app.setVisible(true);
+    }
+    SimpleCalcGUI(){
+        btnCompute.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                double n1 = Double.parseDouble(tfNumber1.getText());
+                double n2 = Double.parseDouble(tfNumber2.getText());
+                String op = cbOperations.getSelectedItem().toString();
+                double result = 0;
+                switch (op){
+                    case "+":
+                        result = n1 + n2;
+                        break;
+                    case "-":
+                        result = n1 - n2;
+                        break;
+                    case "/":
+                        result = n1 / n2;
+                        break;
+                    case "*":
+                        result = n1 * n2;
+                        break;
+                }
+                tfResult.setText(String.format("%.2f",result));
+            }
+        });
     }
 
 }

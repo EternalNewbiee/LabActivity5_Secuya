@@ -24,30 +24,35 @@ public class SimpleCalcGUI extends JFrame {
         app.setVisible(true);
     }
     SimpleCalcGUI(){
+        tfResult.setEditable(false);
         btnCompute.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                double n1 = Double.parseDouble(tfNumber1.getText());
-                double n2 = Double.parseDouble(tfNumber2.getText());
-                String op = cbOperations.getSelectedItem().toString();
-                double result = 0;
-                switch (op){
-                    case "+":
-                        result = n1 + n2;
-                        break;
-                    case "-":
-                        result = n1 - n2;
-                        break;
-                    case "/":
-                        result = n1 / n2;
-                        break;
-                    case "*":
-                        result = n1 * n2;
-                        break;
+                try {
+                    double n1 = Double.parseDouble(tfNumber1.getText());
+                    double n2 = Double.parseDouble(tfNumber2.getText());
+                    String op = cbOperations.getSelectedItem().toString();
+                    double result = 0;
+                    switch (op) {
+                        case "+":
+                            result = n1 + n2;
+                            break;
+                        case "-":
+                            result = n1 - n2;
+                            break;
+                        case "/":
+                            result = n1 / n2;
+                            break;
+                        case "*":
+                            result = n1 * n2;
+                            break;
+                    }
+                    tfResult.setText(String.format("%.2f", result));
+                } catch (NumberFormatException error) {
+                    JOptionPane.showMessageDialog(null, "INVALID INPUT", "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
-                tfResult.setText(String.format("%.2f",result));
             }
-        });
-    }
+     });
 
+    }
 }

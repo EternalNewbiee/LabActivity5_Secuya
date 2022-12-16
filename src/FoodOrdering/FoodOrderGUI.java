@@ -31,7 +31,7 @@ public class FoodOrderGUI extends JFrame{
         btnOrder.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                try {
+                try {
                     double total = 0;
                     if (cPizza.isSelected()) total += 100;
                     if (cBurger.isSelected()) total += 80;
@@ -44,11 +44,11 @@ public class FoodOrderGUI extends JFrame{
                     if (rb10.isSelected()) total -= total * .10;
                     if (rb15.isSelected()) total -= total * .15;
 
-//                    if(total==0) throw(new NoOrderException());
-                    JOptionPane.showMessageDialog(null, "The total price is Php " + String.format("%.2f", total));
-//                }catch (NoOrderException ex) {
-//                    JOptionPane.showMessageDialog(null,"Please Select a Food Item","INVALID ORDER", JOptionPane.ERROR_MESSAGE);
-//                }
+                    if(total==0) throw(new NoOrderException());
+                    JOptionPane.showMessageDialog(null, "The total price is Php " + String.format("%.2f", total),"ORDER CONFIRMATION", JOptionPane.INFORMATION_MESSAGE);
+                }catch (NoOrderException ex) {
+                    JOptionPane.showMessageDialog(null,"Please Select a Food Item","INVALID ORDER", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
